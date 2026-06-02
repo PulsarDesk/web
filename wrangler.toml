@@ -1,0 +1,15 @@
+# Cloudflare Pages configuration for the Pulsar website.
+#
+# The site is a fully prerendered SvelteKit app built with
+# @sveltejs/adapter-cloudflare. Deploy with:
+#
+#   npm run build          # outputs to .svelte-kit/cloudflare
+#   npm run deploy         # wrangler pages deploy
+#
+# or connect this repo to Cloudflare Pages with:
+#   Build command:          npm run build
+#   Build output directory: .svelte-kit/cloudflare
+
+name = "pulsar-website"
+compatibility_date = "2026-05-01"
+pages_build_output_dir = ".svelte-kit/cloudflare"
