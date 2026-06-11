@@ -13,31 +13,31 @@ Built with **SvelteKit** (Svelte 5) + TypeScript, fully prerendered, deployed on
 ## Develop
 
 ```sh
-npm install
-npm run dev          # http://localhost:5173
+bun install
+bun run dev          # http://localhost:5173
 ```
 
 ## Build & preview
 
 ```sh
-npm run build        # → .svelte-kit/cloudflare
-npm run preview      # serve the build at http://localhost:4173
+bun run build        # → .svelte-kit/cloudflare
+bun run preview      # serve the build at http://localhost:4173
 ```
 
 ## Test
 
 ```sh
-npm test             # unit + e2e
-npm run test:unit    # Vitest (jsdom + @testing-library)
-npm run test:e2e     # Playwright (run `npx playwright install chromium` once first)
-npm run check        # svelte-check (types + a11y)
+bun run test         # unit + e2e
+bun run test:unit    # Vitest (jsdom + @testing-library)
+bun run test:e2e     # Playwright (run `bunx playwright install chromium` once first)
+bun run check        # svelte-check (types + a11y)
 ```
 
 ## Deploy to Cloudflare Pages
 
-- **Git integration:** set the build command to `npm run build` and the build output
+- **Git integration:** set the build command to `bun run build` and the build output
   directory to `.svelte-kit/cloudflare`.
-- **CLI:** `npm run deploy` (uses `wrangler`; run `npx wrangler login` first).
+- **CLI:** `bun run deploy` (uses `wrangler`; run `bunx wrangler login` first).
 
 ## Project layout
 

@@ -58,14 +58,14 @@ static/favicon.svg            # Pulsar mark (hardcoded accent #4d60e8)
 ## Commands
 
 ```bash
-npm run dev            # dev server
-npm run build          # production build → .svelte-kit/cloudflare
-npm run preview        # serve the build locally (port 4173)
-npm run check          # svelte-check (types + a11y)
-npm run test           # unit + e2e
-npm run test:unit      # Vitest (jsdom + @testing-library) — src/**/*.test.ts
-npm run test:e2e       # Playwright — e2e/*.spec.ts (builds + previews first)
-npm run deploy         # build + wrangler pages deploy
+bun run dev            # dev server
+bun run build          # production build → .svelte-kit/cloudflare
+bun run preview        # serve the build locally (port 4173)
+bun run check          # svelte-check (types + a11y)
+bun run test           # unit + e2e
+bun run test:unit      # Vitest (jsdom + @testing-library) — src/**/*.test.ts
+bun run test:e2e       # Playwright — e2e/*.spec.ts (builds + previews first)
+bun run deploy         # build + wrangler pages deploy
 ```
 
 ## Tests
@@ -76,14 +76,14 @@ npm run deploy         # build + wrangler pages deploy
 - **Playwright** (`playwright.config.ts`, `e2e/`): real-browser tests for both
   pages, OS detection (UA-overridden mac/win/linux), reveal-on-scroll, header
   scroll border, nav, and a console-error-free smoke check.
-- Run `npx playwright install chromium` once on a fresh machine.
+- Run `bunx playwright install chromium` once on a fresh machine.
 
 ## Deploy to Cloudflare Pages
 
-- **Git integration:** Build command `npm run build`, output directory
+- **Git integration:** Build command `bun run build`, output directory
   `.svelte-kit/cloudflare`.
-- **CLI:** `npm run deploy` (uses `wrangler`; `wrangler.toml` sets
-  `pages_build_output_dir`). Run `npx wrangler login` first.
+- **CLI:** `bun run deploy` (uses `wrangler`; `wrangler.toml` sets
+  `pages_build_output_dir`). Run `bunx wrangler login` first.
 
 ## Placeholders to fill in when siblings ship
 
