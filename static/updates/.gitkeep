@@ -1,2 +1,0 @@
-# Update manifests (latest-dev.json / latest.json) are written here by
-# .github/workflows/release.yml and served at <origin>/updates/* by Cloudflare Pages.
