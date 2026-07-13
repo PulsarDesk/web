@@ -42,3 +42,65 @@ test.describe('landing page', () => {
 		await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
 	});
 });
+
+test.describe('browser auto-detection (no saved preference)', () => {
+	test.describe('english browser', () => {
+		test.use({ locale: 'en-US' });
+
+		test('lands in English automatically', async ({ page }) => {
+			await page.goto('/');
+			await expect(page.getByRole('heading', { name: 'Play, connect, control.' })).toBeVisible();
+			await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+		});
+	});
+
+	test.describe('russian browser', () => {
+		test.use({ locale: 'ru-RU' });
+
+		test('lands in Russian automatically', async ({ page }) => {
+			await page.goto('/');
+			await expect(page.getByRole('heading', { name: 'Играй, подключайся, управляй.' })).toBeVisible();
+			await expect(page.locator('html')).toHaveAttribute('lang', 'ru');
+		});
+	});
+
+	test.describe('unsupported browser language', () => {
+		test.use({ locale: 'de-DE' });
+
+		test('falls back to English', async ({ page }) => {
+			await page.goto('/');
+			await expect(page.getByRole('heading', { name: 'Play, connect, control.' })).toBeVisible();
+			await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+		});
+	});
+
+	test.describe('explicit choice beats detection', () => {
+		test.use({ locale: 'en-US' });
+
+		test('picking Türkçe persists over the English browser', async ({ page }) => {
+			await page.goto('/');
+			await page.locator('.lang-btn').click();
+			await page.getByText('Türkçe').click();
+			await expect(page.getByRole('heading', { name: 'Oyna, bağlan, yönet.' })).toBeVisible();
+
+			await page.reload();
+			await expect(page.getByRole('heading', { name: 'Oyna, bağlan, yönet.' })).toBeVisible();
+			await expect(page.locator('html')).toHaveAttribute('lang', 'tr');
+		});
+	});
+
+	test.describe('dark system scheme', () => {
+		test.use({ colorScheme: 'dark' });
+
+		test('starts dark without a flash; manual light choice wins afterwards', async ({ page }) => {
+			await page.goto('/');
+			await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+
+			// explicit light choice must beat the dark system scheme on reload
+			await page.locator('.theme-tgl').click();
+			await expect(page.locator('html')).not.toHaveAttribute('data-theme', 'dark');
+			await page.reload();
+			await expect(page.locator('html')).not.toHaveAttribute('data-theme', 'dark');
+		});
+	});
+});

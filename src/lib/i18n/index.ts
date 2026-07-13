@@ -1,17 +1,18 @@
 import { derived, writable } from 'svelte/store';
 import { browser } from '$app/environment';
 import { DICTS, type Lang } from './translations';
+import { isLang } from './negotiate';
 
 export { LANGS, DICTS, DOC_TITLE, DL_TITLE, DS_LMAP, DL_BTN, type Lang } from './translations';
+export { isLang, pickLang, SUPPORTED } from './negotiate';
 
-const STORAGE_KEY = 'pulsar-lang';
+const COOKIE = 'pulsar-lang';
 
-function isLang(v: unknown): v is Lang {
-	return v === 'tr' || v === 'en' || v === 'kk' || v === 'ru';
-}
-
-/** Current UI language. TR is the source language and the SSR/prerender default. */
-export const lang = writable<Lang>('tr');
+/** Current UI language. The server negotiates the initial value per request
+ *  (pulsar-lang cookie, else Accept-Language, else EN) and +layout.svelte
+ *  seeds this store from it — TR stays the source dictionary (missing keys
+ *  anywhere fall back to TR). */
+export const lang = writable<Lang>('en');
 
 /**
  * Translator store: `$t('hero.title')`. Missing keys fall back to TR, then to
@@ -19,28 +20,13 @@ export const lang = writable<Lang>('tr');
  */
 export const t = derived(lang, (l) => (key: string): string => DICTS[l][key] ?? DICTS.tr[key] ?? key);
 
-/** Switch language, persist it and reflect it on <html lang>. */
+/** Switch language: update the store, <html lang> and the cookie the server
+ *  reads on the next request (explicit choice beats Accept-Language). */
 export function setLang(l: Lang): void {
+	if (!isLang(l)) return;
 	lang.set(l);
 	if (browser) {
 		document.documentElement.lang = l;
-		try {
-			localStorage.setItem(STORAGE_KEY, l);
-		} catch {
-			/* storage unavailable */
-		}
+		document.cookie = `${COOKIE}=${l}; path=/; max-age=31536000; samesite=lax`;
 	}
-}
-
-/** Restore the persisted language on first client render. */
-export function initLang(): void {
-	if (!browser) return;
-	let saved: string | null = null;
-	try {
-		saved = localStorage.getItem(STORAGE_KEY);
-	} catch {
-		/* storage unavailable */
-	}
-	if (isLang(saved) && saved !== 'tr') setLang(saved);
-	else document.documentElement.lang = 'tr';
 }

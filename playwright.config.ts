@@ -9,6 +9,8 @@ export default defineConfig({
 		reuseExistingServer: !process.env.CI
 	},
 	use: {
-		baseURL: 'http://localhost:4173'
+		baseURL: 'http://localhost:4173',
+		// TR browser is the baseline; auto-detection specs override per-describe
+		locale: 'tr-TR'
 	}
 });

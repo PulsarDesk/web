@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "wrangler dev --port 4173",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "test": "vitest run",
     "test:unit": "vitest",
@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.54.0",
-    "@sveltejs/adapter-static": "^3.0.8",
+    "@sveltejs/adapter-cloudflare": "^7.2.9",
     "@sveltejs/kit": "^2.22.0",
     "@sveltejs/vite-plugin-svelte": "^6.0.0",
     "@testing-library/jest-dom": "^6.6.0",

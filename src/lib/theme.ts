@@ -26,8 +26,31 @@ export function toggleTheme(): void {
 	applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
 }
 
-/** Sync the store with whatever the app.html head script already applied. */
+function savedTheme(): Theme | null {
+	try {
+		const v = localStorage.getItem(STORAGE_KEY);
+		return v === 'dark' || v === 'light' ? v : null;
+	} catch {
+		return null;
+	}
+}
+
+/** Reflect a theme on the DOM + store without persisting it (system-follow). */
+function reflect(t: Theme): void {
+	theme.set(t);
+	if (t === 'dark') document.documentElement.dataset.theme = 'dark';
+	else delete document.documentElement.dataset.theme;
+}
+
+/** Sync the store with whatever the app.html head script already applied
+ *  (saved choice, else prefers-color-scheme), and — while the user has not
+ *  made an explicit choice — keep following live system scheme changes. */
 export function initTheme(): void {
 	if (!browser) return;
 	theme.set(document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
+	if (savedTheme() === null && typeof matchMedia === 'function') {
+		matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+			if (savedTheme() === null) reflect(e.matches ? 'dark' : 'light');
+		});
+	}
 }
