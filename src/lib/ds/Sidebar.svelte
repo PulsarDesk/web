@@ -4,6 +4,7 @@
 	import IDDisplay from '$lib/ds/IDDisplay.svelte';
 	import PulsarMark from '$lib/ds/PulsarMark.svelte';
 	import { NAV, SELF_ID, type NavId } from '$lib/ds/data';
+	import { t } from '$lib/i18n';
 
 	let { active = 'home', selfId = SELF_ID }: { active?: NavId; selfId?: string } = $props();
 </script>
@@ -30,19 +31,19 @@
 					: 'transparent'}; transition: all var(--dur) var(--ease);"
 			>
 				<Icon name={n.icon} size={19} stroke={on ? 2.1 : 1.9} />
-				{n.label}
+				{$t(n.labelKey)}
 			</button>
 		{/each}
 	</nav>
 	<div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
-		<IDDisplay id={selfId} />
+		<IDDisplay id={selfId} label={$t('ds.side.selfIdLabel')} />
 		<div style="display: flex; align-items: center; gap: 9px; padding: 4px 6px;">
-			<Avatar name="Sen" tone="accent" size={32} />
+			<Avatar name={$t('ds.side.you')} tone="accent" size={32} />
 			<div style="line-height: 1.2;">
-				<div style="font-size: 13px; font-weight: 600;">Bu cihaz</div>
+				<div style="font-size: 13px; font-weight: 600;">{$t('ds.side.thisDevice')}</div>
 				<div style="font-size: 11.5px; color: var(--ok); display: flex; align-items: center; gap: 5px;">
 					<span style="width: 6px; height: 6px; border-radius: 50%; background: var(--ok);"></span>
-					Çevrimiçi · relay’e kayıtlı
+					{$t('ds.side.online')}
 				</div>
 			</div>
 		</div>

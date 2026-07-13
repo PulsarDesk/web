@@ -187,7 +187,6 @@
 </section>
 
 <style>
-	a { color: inherit; }
 	.wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
 
 	/* hero */
@@ -247,11 +246,17 @@
 	.req li { display:flex; justify-content:space-between; font-size:14px; border-bottom:1px dashed var(--border); padding-bottom:11px; }
 	.req li span:first-child { color: var(--text-muted); }
 	.req li span:last-child { font-weight:600; }
-	.src-term { font-family: var(--font-mono); font-size:12.5px; background: oklch(0.21 0.02 268); color: oklch(0.85 0.02 268); border-radius: var(--r); padding:16px 18px; line-height:1.9; }
+	.src-term { font-family: var(--font-mono); font-size:12.5px; background: oklch(0.21 0.02 268); color: oklch(0.85 0.02 268); border-radius: var(--r); padding:16px 18px; line-height:1.9; overflow-x: auto; }
 	.src-term .g { color: oklch(0.78 0.13 158); } .src-term .a { color: oklch(0.78 0.14 272); } .src-term .c { color: oklch(0.62 0.02 268); }
 	.checksum { margin-top:14px; font-size:12px; color: var(--text-faint); font-family: var(--font-mono); word-break: break-all; }
 	.checksum a { color: var(--accent); text-decoration:none; }
 	.checksum a:hover { text-decoration:underline; }
 
 	@media (max-width: 820px) { .os-grid, .info-grid { grid-template-columns: 1fr; } }
+	@media (max-width: 560px) {
+		/* detected card: row layout overflows — stack icon / meta / button */
+		.detected .top { flex-direction: column; text-align: center; gap: 14px; }
+		.detected .meta { text-align: center; }
+		.detected .alt { justify-content: center; }
+	}
 </style>

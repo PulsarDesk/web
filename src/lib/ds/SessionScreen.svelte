@@ -2,6 +2,7 @@
 	import FauxDesktop from '$lib/ds/FauxDesktop.svelte';
 	import Icon from '$lib/ds/Icon.svelte';
 	import ToolButton from '$lib/ds/ToolButton.svelte';
+	import { t } from '$lib/i18n';
 
 	/* The active remote-desktop / game-stream session view: a full-bleed remote
 	   viewport (FauxDesktop) with a dark glassy floating toolbar (peer name,
@@ -32,11 +33,11 @@
 	let quality = $state('auto');
 	let fs = $state(false);
 
-	const QUALITIES = [
-		{ v: 'auto', l: 'Oto' },
+	const QUALITIES = $derived([
+		{ v: 'auto', l: $t('ds.session.qAuto') },
 		{ v: 'hq', l: '4K' },
-		{ v: 'fast', l: 'Hızlı' }
-	];
+		{ v: 'fast', l: $t('ds.session.qFast') }
+	]);
 
 	const FILES = [
 		{ n: 'rapor-q3.pdf', s: '2.4 MB', d: '↓' },
@@ -48,9 +49,12 @@
 	<div style="position: relative; flex: 1; overflow: hidden;">
 		<FauxDesktop {mode} />
 
-		<!-- floating toolbar -->
+		<!-- floating toolbar (transform lives in the global .s-toolbar rule so
+		     small embeds can override it with a scale — inline style would win
+		     over any stylesheet) -->
 		<div
-			style="position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; align-items: center; gap: 4px; padding: 7px 9px; border-radius: 14px; background: oklch(0.18 0.02 262 / 0.82); backdrop-filter: blur(16px); border: 1px solid oklch(1 0 0 / 0.12); box-shadow: 0 10px 40px -8px rgba(0,0,0,0.5);"
+			class="s-toolbar"
+			style="position: absolute; top: 14px; left: 50%; z-index: 3; display: flex; align-items: center; gap: 4px; padding: 7px 9px; border-radius: 14px; background: oklch(0.18 0.02 262 / 0.82); backdrop-filter: blur(16px); border: 1px solid oklch(1 0 0 / 0.12); box-shadow: 0 10px 40px -8px rgba(0,0,0,0.5);"
 		>
 			<div
 				style="display: flex; align-items: center; gap: 9px; padding: 0 10px 0 6px; border-right: 1px solid oklch(1 0 0 / 0.12); margin-right: 4px;"
@@ -72,37 +76,37 @@
 						? 'oklch(0.6 0.18 272 / 0.32)'
 						: 'oklch(0.7 0.02 260 / 0.25)'}; color: {conn === 'p2p' ? 'oklch(0.86 0.09 282)' : 'oklch(0.85 0.01 260)'};"
 				>
-					{conn === 'p2p' ? 'DOĞRUDAN P2P' : 'RELAY'}
+					{conn === 'p2p' ? $t('ds.session.direct') : $t('ds.session.relay')}
 				</span>
 			</div>
 			{#if mode === 'remote'}
-				<ToolButton icon="monitor" label="Ekran 1" active />
-				<ToolButton icon="clipboard" label="Pano" />
+				<ToolButton icon="monitor" label={$t('ds.session.screen1')} active />
+				<ToolButton icon="clipboard" label={$t('ds.session.clipboard')} />
 				<ToolButton
 					icon="file"
-					label="Dosya"
+					label={$t('ds.session.files')}
 					active={panel === 'files'}
 					onclick={() => (panel = panel === 'files' ? null : 'files')}
 				/>
-				<ToolButton icon="keyboard" label="Klavye" />
-				<ToolButton icon="power" label="Ctrl+Alt+Del" />
+				<ToolButton icon="keyboard" label={$t('ds.session.keyboard')} />
+				<ToolButton icon="power" label={$t('ds.session.cad')} />
 			{/if}
 			{#if mode === 'game'}
-				<ToolButton icon="gaming" label="Kontrolcü" active />
-				<ToolButton icon="speaker" label="Ses" />
-				<ToolButton icon="bolt" label="Düşük gec." active />
+				<ToolButton icon="gaming" label={$t('ds.session.controller')} active />
+				<ToolButton icon="speaker" label={$t('ds.session.audio')} />
+				<ToolButton icon="bolt" label={$t('ds.session.lowLat')} active />
 			{/if}
 			<ToolButton
 				icon="chat"
-				label="Sohbet"
+				label={$t('ds.session.chat')}
 				active={panel === 'chat'}
 				onclick={() => (panel = panel === 'chat' ? null : 'chat')}
 			/>
-			<ToolButton icon="expand" label="Tam ekran" active={fs} onclick={() => (fs = !fs)} />
+			<ToolButton icon="expand" label={$t('ds.session.fullscreen')} active={fs} onclick={() => (fs = !fs)} />
 			<div
 				style="display: flex; align-items: center; gap: 2px; margin-left: 4px; padding-left: 4px; border-left: 1px solid oklch(1 0 0 / 0.12);"
 			>
-				<ToolButton icon="x" label="Bitir" danger onclick={onEnd} />
+				<ToolButton icon="x" label={$t('ds.session.end')} danger onclick={onEnd} />
 			</div>
 		</div>
 
@@ -110,7 +114,7 @@
 		<div
 			style="position: absolute; bottom: 14px; right: 14px; z-index: 3; display: flex; gap: 8px; align-items: center; padding: 6px 8px 6px 12px; border-radius: 12px; background: oklch(0.18 0.02 262 / 0.82); backdrop-filter: blur(16px); border: 1px solid oklch(1 0 0 / 0.12);"
 		>
-			<span style="font-size: 11.5px; font-weight: 600; color: oklch(0.85 0.01 260);">Kalite</span>
+			<span style="font-size: 11.5px; font-weight: 600; color: oklch(0.85 0.01 260);">{$t('ds.session.quality')}</span>
 			<div style="display: inline-flex; gap: 2px; background: oklch(0.1 0.02 262 / 0.6); border-radius: 8px; padding: 2px;">
 				{#each QUALITIES as o (o.v)}
 					<button
@@ -135,7 +139,7 @@
 				<div
 					style="display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--border);"
 				>
-					<span style="font-weight: 700; font-size: 14px;">{panel === 'files' ? 'Dosya transferi' : 'Oturum sohbeti'}</span>
+					<span style="font-weight: 700; font-size: 14px;">{panel === 'files' ? $t('ds.session.fileTransfer') : $t('ds.session.sessionChat')}</span>
 					<button type="button" class="icon-btn" onclick={() => (panel = null)}>
 						<Icon name="x" size={16} />
 					</button>
@@ -147,9 +151,9 @@
 						>
 							<Icon name="file" size={26} style="color: var(--text-faint);" />
 							<div style="font-size: 13px; font-weight: 600; color: var(--text-muted); margin-top: 10px;">
-								Dosyaları buraya sürükle
+								{$t('ds.session.dropFiles')}
 							</div>
-							<div style="font-size: 11.5px; margin-top: 4px;">İki yönlü, şifreli aktarım</div>
+							<div style="font-size: 11.5px; margin-top: 4px;">{$t('ds.session.twoWay')}</div>
 						</div>
 						{#each FILES as f (f.n)}
 							<div
@@ -159,7 +163,7 @@
 								<div style="flex: 1;">
 									<div style="font-size: 13px; font-weight: 600;">{f.n}</div>
 									<div style="font-size: 11px; color: var(--text-faint);">
-										{f.s} · {f.d === '↓' ? 'İndirildi' : 'Gönderildi'}
+										{f.s} · {f.d === '↓' ? $t('ds.session.downloaded') : $t('ds.session.sent')}
 									</div>
 								</div>
 								<Icon name="check" size={15} style="color: var(--ok);" />
@@ -171,19 +175,19 @@
 						<div
 							style="background: var(--surface-2); border-radius: var(--r); padding: 9px 12px; font-size: 13px; align-self: flex-start; max-width: 85%;"
 						>
-							Bağlantı kuruldu, ekranı görebiliyor musun?
+							{$t('ds.session.msg1')}
 						</div>
 						<div
 							style="background: var(--accent); color: #fff; border-radius: var(--r); padding: 9px 12px; font-size: 13px; align-self: flex-end; max-width: 85%;"
 						>
-							Evet, gayet net 👍
+							{$t('ds.session.msg2')}
 						</div>
 					</div>
 				{/if}
 				<div style="padding: 12px; border-top: 1px solid var(--border);">
 					<div class="field">
 						<input
-							placeholder="Mesaj yaz…"
+							placeholder={$t('ds.session.typeMsg')}
 							style="border: none; outline: none; background: transparent; font-size: 13px; width: 100%;"
 						/>
 					</div>

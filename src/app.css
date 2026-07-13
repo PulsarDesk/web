@@ -263,8 +263,44 @@ footer.site .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
 /* ---- live DS app embeds (landing product shots) ---- */
 .ds-shot { width: min(960px, 100%); height: 600px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: var(--surface); }
 .ds-shot .window { width: 100% !important; height: 100% !important; max-width: 100% !important; border-radius: 16px; box-shadow: none; }
+/* the hero shot is a showcase, not a real app — no inner scrolling */
+.ds-shot .content { overflow: hidden; }
 .ds-session { position: absolute; inset: 0; }
 .ds-session .window { width: 100% !important; height: 100% !important; max-width: 100% !important; }
+
+/* session floating toolbar: base transform here (not inline) so the small
+   use-case embeds can shrink it — full-width it overflows their ~490px box */
+.s-toolbar { transform: translateX(-50%); }
+.ds-session .s-toolbar { transform: translateX(-50%) scale(0.76); transform-origin: top center; }
+/* the remote-mode toolbar carries more tools (Ekran/Pano/Dosya/Klavye/
+   Ctrl+Alt+Del) — shrink it further to fit the use-case embed */
+.vis-remote .s-toolbar { transform: translateX(-50%) scale(0.64); }
+
+/* DS screen layout atoms — in the stylesheet (not inline) so embeds can
+   restack them per breakpoint */
+.screen-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 28px; }
+.home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+/* ---- mobile ---- */
+@media (max-width: 920px) {
+	/* AppShell sidebar in the hero shot (design hid .appshot .side here too);
+	   !important because the component sets display:flex inline */
+	.ds-shot aside { display: none !important; }
+}
+@media (max-width: 760px) {
+	.ds-shot .home-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+	header.site .wrap { padding: 0 14px; }
+	.nav { gap: 12px; }
+	.gh { display: none; }
+}
+@media (max-width: 560px) {
+	.ds-shot .content { padding: 20px; }
+	.ds-shot .screen-head { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 20px; }
+	.ds-session .s-toolbar { transform: translateX(-50%) scale(0.52); }
+	.vis-remote .s-toolbar { transform: translateX(-50%) scale(0.44); }
+}
 
 /* ---- scroll reveal (shared by landing sections) ---- */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out); }

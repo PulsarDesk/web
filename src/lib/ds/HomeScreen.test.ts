@@ -1,9 +1,13 @@
 import '@testing-library/jest-dom/vitest';
 import { fireEvent, render, screen } from '@testing-library/svelte';
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { lang } from '$lib/i18n';
 import HomeScreen from './HomeScreen.svelte';
 
 describe('HomeScreen', () => {
+	beforeEach(() => lang.set('tr'));
+
+
 	it('renders the connect screen with the default device id', () => {
 		render(HomeScreen);
 		expect(screen.getByRole('heading', { name: 'Bağlan' })).toBeInTheDocument();

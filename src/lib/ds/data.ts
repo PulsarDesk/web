@@ -10,7 +10,7 @@ export type DeviceCategory = 'pc' | 'server' | 'console';
 
 /** A recent connection shortcut. */
 export interface Recent {
-	name: string;
+	nameKey: string;
 	id: string;
 	tone: AvatarTone;
 	cat: DeviceCategory;
@@ -19,16 +19,16 @@ export interface Recent {
 export const SELF_ID = '482 913 056';
 
 export const RECENTS: Recent[] = [
-	{ name: 'Ev PC’si', id: '719 204 663', tone: 'accent', cat: 'pc' },
-	{ name: 'Ofis Sunucusu', id: '305 881 027', tone: 'cyan', cat: 'server' },
-	{ name: 'Oyun Rig’i', id: '640 117 992', tone: 'ok', cat: 'console' }
+	{ nameKey: 'ds.dev.homePc', id: '719 204 663', tone: 'accent', cat: 'pc' },
+	{ nameKey: 'ds.dev.officeServer', id: '305 881 027', tone: 'cyan', cat: 'server' },
+	{ nameKey: 'ds.dev.gamingRig', id: '640 117 992', tone: 'ok', cat: 'console' }
 ];
 
 /** Sidebar navigation model. */
 export type NavId = 'home' | 'devices' | 'gaming' | 'settings';
-export const NAV: { id: NavId; label: string; icon: IconName }[] = [
-	{ id: 'home', label: 'Bağlan', icon: 'connect' },
-	{ id: 'devices', label: 'Cihazlar', icon: 'devices' },
-	{ id: 'gaming', label: 'Gaming', icon: 'gaming' },
-	{ id: 'settings', label: 'Ayarlar', icon: 'settings' }
+export const NAV: { id: NavId; labelKey: string; icon: IconName }[] = [
+	{ id: 'home', labelKey: 'ds.nav.home', icon: 'connect' },
+	{ id: 'devices', labelKey: 'ds.nav.devices', icon: 'devices' },
+	{ id: 'gaming', labelKey: 'ds.nav.gaming', icon: 'gaming' },
+	{ id: 'settings', labelKey: 'ds.nav.settings', icon: 'settings' }
 ];

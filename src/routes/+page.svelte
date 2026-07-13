@@ -27,7 +27,7 @@
 				<span>{@html $t('hero.dl')}</span>
 			</a>
 		</div>
-		<div class="osline">macOS · Windows · Linux</div>
+		<div class="osline">macOS · Windows · Linux · Android · iOS ({$t('dl.soon').toLowerCase()})</div>
 
 		<!-- product shot -->
 		<div class="shot-stage">
@@ -49,7 +49,7 @@
 	<div class="wrap">
 		<div class="cell"><div class="v">&lt;<em>8</em> ms</div><div class="k">{@html $t('strip.k1')}</div></div>
 		<div class="cell"><div class="v">4K · <em>120</em> fps</div><div class="k">{@html $t('strip.k2')}</div></div>
-		<div class="cell"><div class="v">{@html $t('strip.v3')}</div><div class="k">macOS · Windows · Linux</div></div>
+		<div class="cell"><div class="v">{@html $t('strip.v3')}</div><div class="k">macOS · Windows · Linux · Android</div></div>
 		<div class="cell"><div class="v">{@html $t('strip.v4')}</div><div class="k">GPLv3 · self-host</div></div>
 	</div>
 </div>
@@ -145,7 +145,9 @@
 </section>
 
 <style>
-	a { color: inherit; }
+	/* NOTE: no scoped `a { color: inherit }` here — the scope class would give
+	   it higher specificity than the global .btn-primary color (white text).
+	   app.css already carries the unscoped rule. */
 	.wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
 
 	/* ============ HERO ============ */
@@ -180,7 +182,10 @@
 	.chip-float :global(.mono) { font-family: var(--font-mono); font-weight: 500; font-size: 11.5px; color: var(--text-muted); }
 
 	/* ============ LOGO STRIP / TRUST ============ */
-	.strip { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); }
+	/* position:relative lifts the strip above the hero's absolutely-positioned
+	   fade overlay (.shot-stage::after), which otherwise paints over the 1px
+	   top border */
+	.strip { position: relative; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); }
 	.strip .wrap { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
 	.strip .cell { flex: 1; min-width: 200px; text-align: center; padding: 26px 18px; border-left: 1px solid var(--border); }
 	.strip .cell:first-child { border-left: none; }
@@ -254,7 +259,12 @@
 		.hstep::after { display: none; }
 		.cf1, .cf2 { display: none; }
 	}
-	@media (max-width: 560px) { .fgrid { grid-template-columns: 1fr; } }
+	@media (max-width: 560px) {
+		.fgrid { grid-template-columns: 1fr; }
+		/* stacked strip cells: the vertical divider becomes a horizontal one */
+		.strip .cell { border-left: none; border-top: 1px solid var(--border); }
+		.strip .cell:first-child { border-top: none; }
+	}
 
 	/* ---- dark-mode adjustments for page glue ---- */
 	:global([data-theme="dark"]) .pill { color: oklch(0.83 0.08 275); }

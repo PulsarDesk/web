@@ -4,9 +4,9 @@
 	let { title, sub, right }: { title: string; sub?: string; right?: Snippet } = $props();
 </script>
 
-<div
-	style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 28px;"
->
+<!-- layout lives in the global .screen-head rule so small embeds can stack
+     title and controls with a media query (inline style would win over CSS) -->
+<div class="screen-head">
 	<div>
 		<h1 style="font-size: 27px; letter-spacing: -0.03em;">{title}</h1>
 		{#if sub}

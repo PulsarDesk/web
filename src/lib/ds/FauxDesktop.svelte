@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { t } from '$lib/i18n';
 
 	/* The remote viewport backdrop — a stylised stand-in for the streamed screen.
 	   `remote` paints an abstract desktop (menu bar, windows, dock); `game` paints a
@@ -43,7 +44,7 @@
 			<div
 				style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; color: oklch(0.85 0.05 215); text-transform: uppercase;"
 			>
-				Canlı oyun akışı
+				{$t('ds.faux.live')}
 			</div>
 			<div
 				style="font-family: var(--font-display); font-size: 34px; font-weight: 600; color: #fff; margin-top: 8px; letter-spacing: -0.02em;"
@@ -60,9 +61,9 @@
 			style="position: absolute; top: 0; left: 0; right: 0; height: 28px; background: oklch(0.18 0.02 255 / 0.55); backdrop-filter: blur(8px); display: flex; align-items: center; padding: 0 14px; gap: 16px; color: oklch(0.92 0.01 255); font-size: 11.5px; font-weight: 600;"
 		>
 			<span style="font-weight: 700;">●</span>
-			<span>Dosya</span>
-			<span>Düzen</span>
-			<span>Görünüm</span>
+			<span>{$t('ds.faux.file')}</span>
+			<span>{$t('ds.faux.edit')}</span>
+			<span>{$t('ds.faux.view')}</span>
 			<span style="margin-left: auto; font-family: var(--font-mono);">{clock}</span>
 		</div>
 		<div
