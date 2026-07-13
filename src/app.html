@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="tr">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>
+			try {
+				if (localStorage.getItem('pulsar-theme') === 'dark') document.documentElement.dataset.theme = 'dark';
+			} catch (e) {}
+			try {
+				var ua = navigator.userAgent + ' ' + navigator.platform;
+				document.documentElement.dataset.os = /Win/i.test(ua)
+					? 'win'
+					: /Linux|X11/i.test(ua) && !/Android/i.test(ua)
+						? 'linux'
+						: 'mac';
+			} catch (e) {}
+		</script>
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
