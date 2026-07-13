@@ -264,6 +264,12 @@
 		/* stacked strip cells: the vertical divider becomes a horizontal one */
 		.strip .cell { border-left: none; border-top: 1px solid var(--border); }
 		.strip .cell:first-child { border-top: none; }
+		/* CTA card: the wide download button (white-space: nowrap) breaks out of
+		   the card — let button labels wrap and stack the row */
+		.cta { padding: 0 16px 72px; }
+		.cta-inner { padding: 56px 20px; }
+		.cta-row { flex-direction: column; align-items: center; }
+		.cta-row :global(.btn) { white-space: normal; text-align: center; justify-content: center; max-width: 100%; }
 	}
 
 	/* ---- dark-mode adjustments for page glue ---- */
