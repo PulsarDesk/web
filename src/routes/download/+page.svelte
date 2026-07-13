@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { lang, t, DL_TITLE, DL_BTN } from '$lib/i18n';
+	import Seo from '$lib/site/Seo.svelte';
 	import type { ReleaseAsset } from '$lib/server/releases';
 	import type { PageData } from './$types';
 
@@ -55,9 +56,7 @@
 	const ver = (v: string | null, req: string) => `${v ?? 'latest'} · ${req}`;
 </script>
 
-<svelte:head>
-	<title>{DL_TITLE[$lang]}</title>
-</svelte:head>
+<Seo title={DL_TITLE[$lang]} description={$t('dl.sub')} path="/download" />
 
 <!-- HERO -->
 <section class="dl-hero">

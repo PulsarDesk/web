@@ -4,13 +4,12 @@
 	import AppShell from '$lib/ds/AppShell.svelte';
 	import HomeScreen from '$lib/ds/HomeScreen.svelte';
 	import SessionScreen from '$lib/ds/SessionScreen.svelte';
+	import Seo from '$lib/site/Seo.svelte';
 
 	const L = $derived(DS_LMAP[$lang]);
 </script>
 
-<svelte:head>
-	<title>{DOC_TITLE[$lang]}</title>
-</svelte:head>
+<Seo title={DOC_TITLE[$lang]} description={$t('hero.sub')} path="/" />
 
 <!-- svelte-ignore a11y_consider_explicit_label -->
 <a id="top"></a>
