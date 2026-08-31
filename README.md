@@ -4,9 +4,11 @@ Marketing site for [Pulsar](https://github.com/PulsarDesk), the free, open-sourc
 remote-desktop + game-streaming app. Implemented from the Claude Design handoff
 (`Pulsar Website.html` + `Pulsar Download.html`) as a SvelteKit app.
 
-- **Stack:** SvelteKit (Svelte 5) · TypeScript · adapter-static (fully prerendered)
+- **Stack:** SvelteKit (Svelte 5) · TypeScript · SSR on Cloudflare Workers
+  (`@sveltejs/adapter-cloudflare` + `wrangler.jsonc`)
 - **Package manager:** [bun](https://bun.sh) — never npm
-- **i18n:** TR (source) · EN · KK · RU, persisted in `localStorage`
+- **i18n:** TR (source) · EN (default) · KK · RU, persisted in the `pulsar-lang`
+  cookie (read server-side per request — that's why the site is SSR)
 - **Theme:** light-first with a dark mode toggle, persisted in `localStorage`
 - **Design tokens:** ported verbatim from `design/project/assets/tokens.css`
   (the canonical source of truth) — do not edit values here without syncing design/
@@ -32,7 +34,7 @@ bun run check       # svelte-check
 ## Build
 
 ```sh
-bun run build       # static output in build/
+bun run build       # Worker output in .svelte-kit/cloudflare/
 bun run preview
 ```
 
