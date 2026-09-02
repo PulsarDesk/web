@@ -8,8 +8,9 @@ const MOBILE_REPO = 'PulsarDesk/pulsar-mobile';
 
 export const DESKTOP_RELEASES_URL = `https://github.com/${DESKTOP_REPO}/releases/latest`;
 export const MOBILE_RELEASES_URL = `https://github.com/${MOBILE_REPO}/releases/latest`;
-/** Stable "latest" URL — works even without the API (GitHub redirects). */
-export const APK_LATEST_URL = `https://github.com/${MOBILE_REPO}/releases/latest/download/app-universal-release.apk`;
+/** Stable "latest" URL — works even without the API (GitHub redirects). The mobile
+ *  release names its APKs without a version for exactly this reason. */
+export const APK_LATEST_URL = `https://github.com/${MOBILE_REPO}/releases/latest/download/Pulsar-android.apk`;
 
 export interface ReleaseAsset {
 	label: string;
@@ -117,7 +118,9 @@ function mapDesktop(release: GhRelease | null): DownloadData['desktop'] {
 function mapAndroid(release: GhRelease | null): DownloadData['android'] {
 	const fb = fallbackData().android;
 	if (!release) return fb;
-	const asset = release.assets.find((a) => /\.apk$/.test(a.name));
+	// Each release carries two APKs; the "hostcontrol" one declares an accessibility
+	// service, which Play Protect refuses to install from a browser. Offer the other.
+	const asset = release.assets.find((a) => /\.apk$/.test(a.name) && !/hostcontrol/i.test(a.name));
 	return {
 		version: release.tag_name,
 		releasesUrl: MOBILE_RELEASES_URL,
