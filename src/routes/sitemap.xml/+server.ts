@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { SITE_URL } from '$lib/site/seo';
+import { SITE_URL } from '#lib/site/seo.js';
 
 const PATHS = ['/', '/download'];
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { t } from '$lib/i18n';
+	import { t } from '#lib/i18n/index.js';
 
 	/* The remote viewport backdrop — a stylised stand-in for the streamed screen.
 	   `remote` paints an abstract desktop (menu bar, windows, dock); `game` paints a

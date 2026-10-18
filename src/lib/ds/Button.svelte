@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import Icon from '$lib/ds/Icon.svelte';
-	import type { IconName } from '$lib/ds/icons';
+	import Icon from '#lib/ds/Icon.svelte';
+	import type { IconName } from '#lib/ds/icons.js';
 
 	let {
 		variant = 'primary',

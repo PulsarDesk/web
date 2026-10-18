@@ -1,5 +1,5 @@
-import type { Handle } from '@sveltejs/kit';
-import { pickLang } from '$lib/i18n/negotiate';
+import type { Handle } from '@sveltejs/kit/hooks';
+import { pickLang } from '#lib/i18n/negotiate.js';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	event.locals.lang = pickLang(

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { lang, t, DL_TITLE, DL_BTN } from '$lib/i18n';
-	import Seo from '$lib/site/Seo.svelte';
-	import type { ReleaseAsset } from '$lib/server/releases';
+	import { lang, t, DL_TITLE, DL_BTN } from '#lib/i18n/index.js';
+	import Seo from '#lib/site/Seo.svelte';
+	import type { ReleaseAsset } from '#lib/server/releases.js';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();

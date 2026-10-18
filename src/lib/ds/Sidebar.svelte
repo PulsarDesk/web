@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Avatar from '$lib/ds/Avatar.svelte';
-	import Icon from '$lib/ds/Icon.svelte';
-	import IDDisplay from '$lib/ds/IDDisplay.svelte';
-	import PulsarMark from '$lib/ds/PulsarMark.svelte';
-	import { NAV, SELF_ID, type NavId } from '$lib/ds/data';
-	import { t } from '$lib/i18n';
+	import Avatar from '#lib/ds/Avatar.svelte';
+	import Icon from '#lib/ds/Icon.svelte';
+	import IDDisplay from '#lib/ds/IDDisplay.svelte';
+	import PulsarMark from '#lib/ds/PulsarMark.svelte';
+	import { NAV, SELF_ID, type NavId } from '#lib/ds/data.js';
+	import { t } from '#lib/i18n/index.js';
 
 	let { active = 'home', selfId = SELF_ID }: { active?: NavId; selfId?: string } = $props();
 </script>

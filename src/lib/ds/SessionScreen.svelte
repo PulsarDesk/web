@@ -1,8 +1,8 @@
 <script lang="ts">
-	import FauxDesktop from '$lib/ds/FauxDesktop.svelte';
-	import Icon from '$lib/ds/Icon.svelte';
-	import ToolButton from '$lib/ds/ToolButton.svelte';
-	import { t } from '$lib/i18n';
+	import FauxDesktop from '#lib/ds/FauxDesktop.svelte';
+	import Icon from '#lib/ds/Icon.svelte';
+	import ToolButton from '#lib/ds/ToolButton.svelte';
+	import { t } from '#lib/i18n/index.js';
 
 	/* The active remote-desktop / game-stream session view: a full-bleed remote
 	   viewport (FauxDesktop) with a dark glassy floating toolbar (peer name,

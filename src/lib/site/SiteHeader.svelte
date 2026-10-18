@@ -1,7 +1,7 @@
 <script lang="ts">
-	import PulsarMark from '$lib/ds/PulsarMark.svelte';
-	import { LANGS, lang, setLang, t, type Lang } from '$lib/i18n';
-	import { toggleTheme } from '$lib/theme';
+	import PulsarMark from '#lib/ds/PulsarMark.svelte';
+	import { LANGS, lang, setLang, t, type Lang } from '#lib/i18n/index.js';
+	import { toggleTheme } from '#lib/theme.js';
 
 	let open = $state(false);
 

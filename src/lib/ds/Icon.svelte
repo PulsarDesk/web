@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ICON_PATHS, type IconName } from '$lib/ds/icons';
+	import { ICON_PATHS, type IconName } from '#lib/ds/icons.js';
 
 	let {
 		name,

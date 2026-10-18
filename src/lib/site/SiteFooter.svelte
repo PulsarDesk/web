@@ -1,6 +1,6 @@
 <script lang="ts">
-	import PulsarMark from '$lib/ds/PulsarMark.svelte';
-	import { t } from '$lib/i18n';
+	import PulsarMark from '#lib/ds/PulsarMark.svelte';
+	import { t } from '#lib/i18n/index.js';
 </script>
 
 <footer class="site">

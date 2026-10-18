@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/vitest';
 import { fireEvent, render, screen } from '@testing-library/svelte';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { lang } from '$lib/i18n';
+import { lang } from '#lib/i18n/index.js';
 import HomeScreen from './HomeScreen.svelte';
 
 describe('HomeScreen', () => {

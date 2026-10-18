@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Icon from '$lib/ds/Icon.svelte';
-	import type { IconName } from '$lib/ds/icons';
+	import Icon from '#lib/ds/Icon.svelte';
+	import type { IconName } from '#lib/ds/icons.js';
 
 	/* A vertical icon+label button used inside the dark floating session toolbar.
 	   Stacks a glyph over a tiny caption; `active` lifts it onto a translucent

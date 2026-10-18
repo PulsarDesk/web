@@ -1,18 +1,18 @@
 import { get } from 'svelte/store';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-/* Toggle the mocked $app/environment browser flag per describe block. The
+/* Toggle the mocked $app/env browser flag per describe block. The
    getter is read at call time inside applyTheme/toggleTheme/initTheme, so a
-   single import of $lib/theme can be exercised in both modes. */
+   single import of #lib/theme can be exercised in both modes. */
 const env = vi.hoisted(() => ({ browser: false }));
 
-vi.mock('$app/environment', () => ({
+vi.mock('$app/env', () => ({
 	get browser() {
 		return env.browser;
 	}
 }));
 
-import { applyTheme, initTheme, theme, toggleTheme } from '$lib/theme';
+import { applyTheme, initTheme, theme, toggleTheme } from '#lib/theme.js';
 
 const STORAGE_KEY = 'pulsar-theme';
 

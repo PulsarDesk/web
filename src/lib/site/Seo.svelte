@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { lang } from '$lib/i18n';
+	import { lang } from '#lib/i18n/index.js';
 	import { OG_IMAGE, OG_LOCALE, SITE_URL } from './seo';
 
 	let { title, description, path = '/' }: { title: string; description: string; path?: string } = $props();

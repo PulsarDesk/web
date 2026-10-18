@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { reveal } from '$lib/actions/reveal';
-	import { lang, t, DOC_TITLE, DS_LMAP } from '$lib/i18n';
-	import AppShell from '$lib/ds/AppShell.svelte';
-	import HomeScreen from '$lib/ds/HomeScreen.svelte';
-	import SessionScreen from '$lib/ds/SessionScreen.svelte';
-	import Seo from '$lib/site/Seo.svelte';
+	import { reveal } from '#lib/actions/reveal.js';
+	import { lang, t, DOC_TITLE, DS_LMAP } from '#lib/i18n/index.js';
+	import AppShell from '#lib/ds/AppShell.svelte';
+	import HomeScreen from '#lib/ds/HomeScreen.svelte';
+	import SessionScreen from '#lib/ds/SessionScreen.svelte';
+	import Seo from '#lib/site/Seo.svelte';
 
 	const L = $derived(DS_LMAP[$lang]);
 </script>

@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { getDownloadData } from '$lib/server/releases';
+import { getDownloadData } from '#lib/server/releases.js';
 
 export type OsKey = 'mac' | 'win' | 'linux' | 'android' | 'ios';
 

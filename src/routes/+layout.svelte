@@ -1,9 +1,9 @@
 <script lang="ts">
 	import '../app.css';
-	import SiteHeader from '$lib/site/SiteHeader.svelte';
-	import SiteFooter from '$lib/site/SiteFooter.svelte';
-	import { lang } from '$lib/i18n';
-	import { initTheme } from '$lib/theme';
+	import SiteHeader from '#lib/site/SiteHeader.svelte';
+	import SiteFooter from '#lib/site/SiteFooter.svelte';
+	import { lang } from '#lib/i18n/index.js';
+	import { initTheme } from '#lib/theme.js';
 	import { onMount } from 'svelte';
 	import type { Snippet } from 'svelte';
 	import type { LayoutData } from './$types';

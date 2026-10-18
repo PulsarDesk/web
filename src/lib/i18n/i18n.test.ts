@@ -1,7 +1,7 @@
 import { get } from 'svelte/store';
 import { afterEach, describe, expect, it } from 'vitest';
-import { DICTS, DL_BTN, DL_TITLE, DOC_TITLE, DS_LMAP, LANGS, lang, setLang, t } from '$lib/i18n';
-import type { Lang } from '$lib/i18n';
+import { DICTS, DL_BTN, DL_TITLE, DOC_TITLE, DS_LMAP, LANGS, lang, setLang, t } from '#lib/i18n/index.js';
+import type { Lang } from '#lib/i18n/index.js';
 
 const ALL_LANGS: Lang[] = ['tr', 'en', 'kk', 'ru'];
 

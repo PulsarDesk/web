@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { AvatarTone } from '$lib/ds/data';
+	import type { AvatarTone } from '#lib/ds/data.js';
 
 	let {
 		name,

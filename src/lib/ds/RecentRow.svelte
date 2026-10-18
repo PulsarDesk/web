@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Avatar from '$lib/ds/Avatar.svelte';
-	import Icon from '$lib/ds/Icon.svelte';
-	import type { AvatarTone } from '$lib/ds/data';
+	import Avatar from '#lib/ds/Avatar.svelte';
+	import Icon from '#lib/ds/Icon.svelte';
+	import type { AvatarTone } from '#lib/ds/data.js';
 
 	let {
 		name,

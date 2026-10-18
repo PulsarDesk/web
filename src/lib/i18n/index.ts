@@ -1,5 +1,5 @@
 import { derived, writable } from 'svelte/store';
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 import { DICTS, type Lang } from './translations';
 import { isLang } from './negotiate';
 

@@ -1,13 +1,13 @@
 <script lang="ts">
-	import Badge from '$lib/ds/Badge.svelte';
-	import Button from '$lib/ds/Button.svelte';
-	import Card from '$lib/ds/Card.svelte';
-	import Icon from '$lib/ds/Icon.svelte';
-	import RecentRow from '$lib/ds/RecentRow.svelte';
-	import ScreenHeader from '$lib/ds/ScreenHeader.svelte';
-	import SegControl from '$lib/ds/SegControl.svelte';
-	import { RECENTS, SELF_ID, type Recent } from '$lib/ds/data';
-	import { t } from '$lib/i18n';
+	import Badge from '#lib/ds/Badge.svelte';
+	import Button from '#lib/ds/Button.svelte';
+	import Card from '#lib/ds/Card.svelte';
+	import Icon from '#lib/ds/Icon.svelte';
+	import RecentRow from '#lib/ds/RecentRow.svelte';
+	import ScreenHeader from '#lib/ds/ScreenHeader.svelte';
+	import SegControl from '#lib/ds/SegControl.svelte';
+	import { RECENTS, SELF_ID, type Recent } from '#lib/ds/data.js';
+	import { t } from '#lib/i18n/index.js';
 
 	/* The Connect (Bağlan) home screen: two cards side by side. Left — "this device"
 	   shows the relay-issued device id and a one-time password to share. Right —

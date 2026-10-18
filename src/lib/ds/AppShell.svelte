@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import Sidebar from '$lib/ds/Sidebar.svelte';
-	import WindowChrome from '$lib/ds/WindowChrome.svelte';
-	import { SELF_ID, type NavId } from '$lib/ds/data';
+	import Sidebar from '#lib/ds/Sidebar.svelte';
+	import WindowChrome from '#lib/ds/WindowChrome.svelte';
+	import { SELF_ID, type NavId } from '#lib/ds/data.js';
 
 	let {
 		title = 'Pulsar — Bağlan',

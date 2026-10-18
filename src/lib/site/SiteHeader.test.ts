@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/vitest';
 import { fireEvent, render, screen } from '@testing-library/svelte';
 import { get } from 'svelte/store';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { lang } from '$lib/i18n';
+import { lang } from '#lib/i18n/index.js';
 import SiteHeader from './SiteHeader.svelte';
 
 beforeEach(() => {

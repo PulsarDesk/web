@@ -1,4 +1,4 @@
-import type { Lang } from '$lib/i18n';
+import type { Lang } from '#lib/i18n/index.js';
 
 export const SITE_URL = 'https://pulsardesk.com';
 export const OG_IMAGE = `${SITE_URL}/og.png`;
