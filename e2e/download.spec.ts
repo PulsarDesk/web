@@ -35,7 +35,9 @@ test.describe('download page', () => {
 
 		// Android card links the universal APK (asset url or latest/download fallback)
 		const androidRow = all.locator('.os-card', { hasText: 'Android' }).locator('.files a').first();
-		expect(await androidRow.getAttribute('href')).toMatch(/pulsar-mobile\/releases\/.*app-universal-release\.apk$/);
+		const androidHref = await androidRow.getAttribute('href');
+		expect(androidHref).toMatch(/pulsar-mobile\/releases\/.*\.apk$/);
+		expect(androidHref).not.toMatch(/hostcontrol/i); // never the a11y-service variant
 	});
 
 	test('iOS card is marked coming-soon without download rows', async ({ page }) => {
@@ -70,7 +72,9 @@ test.describe('download page', () => {
 		const detected = page.locator('.detected');
 		await expect(detected.getByRole('heading', { name: 'Android' })).toBeVisible();
 		await expect(detected.getByText('Android için indir')).toBeVisible();
-		expect(await detected.locator('a.btn').getAttribute('href')).toMatch(/app-universal-release\.apk$/);
+		const apkHref = await detected.locator('a.btn').getAttribute('href');
+		expect(apkHref).toMatch(/\.apk$/);
+		expect(apkHref).not.toMatch(/hostcontrol/i);
 		await ctx.close();
 	});
 

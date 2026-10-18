@@ -118,8 +118,9 @@ function mapDesktop(release: GhRelease | null): DownloadData['desktop'] {
 function mapAndroid(release: GhRelease | null): DownloadData['android'] {
 	const fb = fallbackData().android;
 	if (!release) return fb;
-	// Each release carries two APKs; the "hostcontrol" one declares an accessibility
-	// service, which Play Protect refuses to install from a browser. Offer the other.
+	// Current releases carry one `Pulsar-android.apk`; v0.11.1 also shipped a "hostcontrol"
+	// APK that declares an accessibility service, which Play Protect refuses to install from
+	// a browser — so never offer that one.
 	const asset = release.assets.find((a) => /\.apk$/.test(a.name) && !/hostcontrol/i.test(a.name));
 	return {
 		version: release.tag_name,
