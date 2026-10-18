@@ -28,5 +28,6 @@ bun run check       # svelte-check
 bun run build && bun run preview
 ```
 
-**No CI in this repo yet** (the only one of the 7 without workflows/semantic-
-release) — deploys are manual via wrangler.
+**CI checks only** (`.github/workflows/ci.yml`: svelte-check, Vitest, build, Playwright
+e2e, advisory `bun audit`) — no semantic-release and **no deploy**: the Worker is deployed
+manually via wrangler.
