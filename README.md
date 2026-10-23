@@ -1,43 +1,59 @@
-# Pulsar — Website
+<p align="center">
+  <img width="120" height="120" src="https://raw.githubusercontent.com/PulsarDesk/.github/main/profile/logo.svg" alt="Pulsar logo">
+</p>
 
-Marketing site for [Pulsar](https://github.com/PulsarDesk), the free, open-source
-remote-desktop + game-streaming app. Implemented from the Claude Design handoff
-(`Pulsar Website.html` + `Pulsar Download.html`) as a SvelteKit app.
+<h1 align="center">Pulsar Website</h1>
 
-- **Stack:** SvelteKit (Svelte 5) · TypeScript · SSR on Cloudflare Workers
-  (`@sveltejs/adapter-cloudflare` + `wrangler.jsonc`)
-- **Package manager:** [bun](https://bun.sh) — never npm
-- **i18n:** TR (source) · EN (default) · KK · RU, persisted in the `pulsar-lang`
-  cookie (read server-side per request — that's why the site is SSR)
-- **Theme:** light-first with a dark mode toggle, persisted in `localStorage`
-- **Design tokens:** ported verbatim from `design/project/assets/tokens.css`
-  (the canonical source of truth) — do not edit values here without syncing design/
-- **Deliberate deviation from the handoff:** the hero app embed is live — the
-  "Uzaktan masaüstü / Oyun akışı" segmented control actually switches the demo
-  (the reference embed rendered it inert)
+<p align="center">
+  The <a href="https://pulsardesk.com">pulsardesk.com</a> website: what Pulsar is and where to download it. 🌐
+</p>
 
-## Develop
+<p align="center">
+  <img src="https://img.shields.io/maintenance/yes/2026?style=for-the-badge" alt="Maintained">
+  <a href="https://github.com/PulsarDesk/web/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/PulsarDesk/web/ci.yml?branch=main&style=for-the-badge&label=CI" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/PulsarDesk/web?style=for-the-badge" alt="License"></a>
+</p>
 
-```sh
+---
+
+## 🚀 Project Status
+Live at [pulsardesk.com](https://pulsardesk.com), in English, Turkish, Kazakh and Russian. The download page always
+points at the newest release of each app.
+
+---
+
+## 📦 Other Pulsar Repositories
+- [**pulsar-desktop**](https://github.com/PulsarDesk/pulsar-desktop) - Pulsar for Windows, macOS and Linux
+- [**pulsar-mobile**](https://github.com/PulsarDesk/pulsar-mobile) - Pulsar for Android
+- [**design**](https://github.com/PulsarDesk/design) - Colors, fonts and designs (the site copies them from here)
+
+---
+
+## 🐞 Reporting a bug
+[Open an issue](https://github.com/PulsarDesk/web/issues/new/choose) with the page link, your browser and a
+screenshot. Problems with the app itself go to [pulsar-desktop](https://github.com/PulsarDesk/pulsar-desktop/issues/new/choose)
+or [pulsar-mobile](https://github.com/PulsarDesk/pulsar-mobile/issues/new/choose).
+
+---
+
+## 🤝 Contributing
+Everyone can open [issues](https://github.com/PulsarDesk/web/issues) and pull requests. Irrelevant or abusive issues
+may be closed or removed. Translations are welcome. Commits follow [Conventional Commits](https://www.conventionalcommits.org).
+
+### Development Guide
+```bash
+git clone https://github.com/PulsarDesk/web.git
+cd web
 bun install
-bun run dev
+bun run dev          # http://localhost:5173
+bun run test         # unit tests
+bun run test:e2e     # browser tests
 ```
 
-## Test
+SvelteKit on Cloudflare Workers. Colors and spacing come from
+[design/tokens.css](https://github.com/PulsarDesk/design/blob/main/project/assets/tokens.css); change them there first.
 
-```sh
-bun run test        # Vitest unit + component tests
-bun run test:e2e    # Playwright end-to-end (builds + previews first)
-bun run check       # svelte-check
-```
+---
 
-## Build
-
-```sh
-bun run build       # Worker output in .svelte-kit/cloudflare/
-bun run preview
-```
-
-## License
-
-GPLv3 — see the PulsarDesk organization repositories.
+## 📄 License
+Pulsar is licensed under **GNU GPLv3 or later** (GPL-3.0-or-later). See the [LICENSE](LICENSE) file for details.
