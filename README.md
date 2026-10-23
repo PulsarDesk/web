@@ -5,7 +5,7 @@
 <h1 align="center">Pulsar Website</h1>
 
 <p align="center">
-  The <a href="https://pulsardesk.com">pulsardesk.com</a> website: what Pulsar is and where to download it. 🌐
+  The <a href="https://pulsardesk.com">pulsardesk.com</a> website for Pulsar, the free TeamViewer and Parsec alternative. 🌐
 </p>
 
 <p align="center">
