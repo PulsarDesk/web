@@ -1,17 +1,17 @@
 <p align="center">
-  <img width="120" height="120" src="https://avatars.githubusercontent.com/u/290144039?s=240" alt="Pulsar logo">
+  <a href="https://pulsardesk.com"><img src=".github/assets/hero.png" alt="pulsardesk.com: the front door to Pulsar" width="100%"></a>
 </p>
 
-<h1 align="center">Pulsar Website</h1>
+<p align="center">The <a href="https://pulsardesk.com">pulsardesk.com</a> website for Pulsar, the free remote desktop and game streaming app. 🌐</p>
 
 <p align="center">
-  The <a href="https://pulsardesk.com">pulsardesk.com</a> website for Pulsar, the free TeamViewer and Parsec alternative. 🌐
+  <a href="https://github.com/PulsarDesk/web/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/PulsarDesk/web/ci.yml?branch=main&style=flat-square&label=CI" alt="CI"></a>
+  <a href="https://github.com/PulsarDesk/web/stargazers"><img src="https://img.shields.io/github/stars/PulsarDesk/web?style=flat-square&color=13B3D4" alt="Stars"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPLv3-5B57E0?style=flat-square" alt="License: GPLv3"></a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/maintenance/yes/2026?style=for-the-badge" alt="Maintained">
-  <a href="https://github.com/PulsarDesk/web/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/PulsarDesk/web/ci.yml?branch=main&style=for-the-badge&label=CI" alt="CI"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/PulsarDesk/web?style=for-the-badge" alt="License"></a>
+  <b>Looking for the app?</b> 👉 <a href="https://github.com/PulsarDesk/pulsar-desktop"><b>Pulsar Desktop</b></a> (Windows, macOS, Linux) · <a href="https://github.com/PulsarDesk/pulsar-mobile"><b>Pulsar Mobile</b></a> (Android)
 </p>
 
 ---
